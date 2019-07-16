@@ -1,5 +1,7 @@
-<project default="all" xmlns:ivy="antlib:org.apache.ivy.ant">
-
+<project xmlns:ivy="antlib:org.apache.ivy.ant" default="jar">
+  <property name="ivy.version" value="2.3.0"/>
+  <property name="ivy.url" value="http://localhost:8081/nexus/content/groups/public/org/apache/ivy/ivy/${ivy.version}/ivy-${ivy.version}.jar"/>
+    
     <path id="classpath">
         <fileset dir="lib" includes="**/*.jar" />
     </path>
