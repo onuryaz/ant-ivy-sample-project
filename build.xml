@@ -1,7 +1,21 @@
 <project xmlns:ivy="antlib:org.apache.ivy.ant" default="jar">
-  <property name="ivy.version" value="2.3.0"/>
-  <property name="ivy.url" value="http://localhost:8081/nexus/content/groups/public/org/apache/ivy/ivy/${ivy.version}/ivy-${ivy.version}.jar"/>
-    
+<!--
+ here is the version of Ivy we will use. change this property to try a newer
+         version if you want 
+-->
+  <property name="ivy.install.version" value="2.4.0"/>
+  <property name="ivy.jar.dir" value="${basedir}/ivy"/>
+  <property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar"/>
+  <property name="build.dir" value="build"/>
+  <property name="src.dir" value="src"/>
+  <target name="download-ivy" unless="skip.download">
+    <mkdir dir="${ivy.jar.dir}"/>
+    <!--
+-->
+    <echo message="installing ivy..."/>
+    <get src="https://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar" dest="${ivy.jar.file}" usetimestamp="true"/>
+  </target>
+  
     <path id="classpath">
         <fileset dir="lib" includes="**/*.jar" />
     </path>
